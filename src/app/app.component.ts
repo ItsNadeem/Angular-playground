@@ -7,13 +7,5 @@ import { BingApiLoaderService } from './bing-api-loader.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  mapLoaded = false;
-
-  constructor(private bingApiLoader: BingApiLoaderService) {
-    this.bingApiLoader.load().then(() => {
-      console.log('map loaded');
-      this.mapLoaded = true;
-    });
-  }
+  constructor() {}
 }

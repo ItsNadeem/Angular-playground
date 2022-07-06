@@ -7,20 +7,22 @@ import { WINDOW } from './window.service';
 })
 export class BingApiLoaderService {
   private promise: Promise<unknown> | undefined;
-  private url = 'https://www.bing.com/api/maps/mapcontrol?callback=__onBingLoaded&branch=release&key=AtIZfi-opfDS-OYCfadslk1zfaJKiv0oDpjAE3ZqyFLALiK0w5Rq1yYp1yfwb_VF';
+  private url = 'https://www.bing.com/api/maps/mapcontrol?callback=_onBingLoaded&branch=release&key=AtIZfi-opfDS-OYCfadslk1zfaJKiv0oDpjAE3ZqyFLALiK0w5Rq1yYp1yfwb_VF';
 
   constructor(@Inject(DOCUMENT) private _documentRef: Document, @Inject(WINDOW) private _windowRef: Window) {}
 
   public load() {
     // First time 'load' is called?
+    console.log("First time 'load' is called?");
     if (!this.promise) {
 
         // Make promise to load
         this.promise = new Promise( resolve => {
 
+          console.log("Promise trace 1");
             // Set callback for when bing maps is loaded.
-            this._windowRef['__onBingLoaded'] = () => {
-                console.log("Bing Maps API loaded")
+            this._windowRef['_onBingLoaded'] = () => {
+               console.log("Promise trace 3");
                 resolve('Bing Maps API loaded');
             };
 
@@ -32,6 +34,7 @@ export class BingApiLoaderService {
             node.defer = true;
             // _documentRef.getElementsByTagName('head')[0].appendChild(node);
             this._documentRef.getElementsByTagName('head')[0].appendChild(node);
+            console.log("Promise trace 2");
         });
     }
 
