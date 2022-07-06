@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BingApiLoaderService } from './bing-api-loader.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Angular-playground';
+
+  mapLoaded = false;
+
+  constructor(private bingApiLoader: BingApiLoaderService) {
+    this.bingApiLoader.load().then(() => {
+      console.log('map loaded');
+      this.mapLoaded = true;
+    });
+  }
 }
