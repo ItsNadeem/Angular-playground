@@ -9,6 +9,7 @@ import { ClusteringLinkingComponent } from './clustering-linking/clustering-link
 import { AngularHomeComponent } from './angular-home/angular-home.component';
 import { BingApiLoaderService } from './bing-api-loader.service';
 import { WINDOW_PROVIDERS } from './window.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { WINDOW_PROVIDERS } from './window.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [WINDOW_PROVIDERS, BingApiLoaderService],
   bootstrap: [AppComponent]
