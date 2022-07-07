@@ -1,7 +1,7 @@
 
 <p *ngIf="!mapLoaded"> Maps not loaded </p>
 <div *ngIf="mapLoaded">
-    <button (click)="createMap()">Click to render Map</button>
+    <a class="card" (click)="createMap()">Click to render Map</a>
     <div #BMap style="width: 100%; height: 40vh;"></div>
 </div>
 

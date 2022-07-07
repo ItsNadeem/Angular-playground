@@ -13,28 +13,22 @@ export class BingApiLoaderService {
 
   public load() {
     // First time 'load' is called?
-    console.log("First time 'load' is called?");
     if (!this.promise) {
 
         // Make promise to load
         this.promise = new Promise( resolve => {
 
-          console.log("Promise trace 1");
             // Set callback for when bing maps is loaded.
             this._windowRef['_onBingLoaded'] = () => {
-               console.log("Promise trace 3");
                 resolve('Bing Maps API loaded');
             };
 
-            // const node = document.createElement('script');
             const node = this._documentRef.createElement('script');
             node.src = this.url;
             node.type = 'text/javascript';
             node.async = true;
             node.defer = true;
-            // _documentRef.getElementsByTagName('head')[0].appendChild(node);
             this._documentRef.getElementsByTagName('head')[0].appendChild(node);
-            console.log("Promise trace 2");
         });
     }
 
